@@ -2,7 +2,7 @@ import Image from "next/image";
 
 function Navbar() {
     return(
-        <nav className="navbar navbar-expand-lg sticky-top">
+        <nav className="navbar sticky-top navbar-expand-lg ">
             <div className="container-fluid">
                 <a className="navbar-brand" href="#">
                     <Image src="/images/logo.webp" alt="logo" layout="fill" priority />
@@ -13,7 +13,7 @@ function Navbar() {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <a className="nav-link" href="#">How it works</a>
+                            <a className="nav-link" href="#how">How it works</a>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link" href="#">Contact</a>

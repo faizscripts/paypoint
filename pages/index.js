@@ -1,10 +1,14 @@
 import Hero from "../components/Hero";
+import How from "../components/How";
 
 function HomePage() {
     return(
-        <div>
+        <>
             <Hero/>
-        </div>
+            <div className="container">
+                <How/>
+            </div>
+        </>
     )
 }
 
