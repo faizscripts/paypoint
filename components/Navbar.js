@@ -2,7 +2,7 @@ import Image from "next/image";
 
 function Navbar() {
     return(
-        <nav className="navbar navbar-expand-lg sticky-top bg-light">
+        <nav className="navbar navbar-expand-lg sticky-top">
             <div className="container-fluid">
                 <a className="navbar-brand" href="#">
                     <Image src="/images/logo.webp" alt="logo" layout="fill" priority />
@@ -18,15 +18,11 @@ function Navbar() {
                         <li className="nav-item">
                             <a className="nav-link" href="#">Contact</a>
                         </li>
-                        <div>
-
-                        </div>
-                        <li className="nav-item pt-lg-1">
+                        <div className="nav-item pt-lg-1 nav-buttons">
                             <button className="btn btn-outline-primary mx-2">Login</button>
-                        </li>
-                        <li className="nav-item pt-lg-1">
                             <button className="btn btn-primary mx-2">Register</button>
-                        </li>
+                        </div>
+
                     </ul>
                 </div>
             </div>

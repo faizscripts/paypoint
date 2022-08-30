@@ -1,0 +1,29 @@
+//large
+@media (max-width: 1199.98px) {}
+
+//medium
+@media (max-width: 991.98px) {
+  .navbar{
+    .nav-buttons{
+      display: flex;
+      justify-content: space-evenly;
+    }
+  }
+
+  #hero{
+    height: 75vh;
+    padding: 0 2rem;
+
+    #description-text{
+      position: absolute;
+      top: 18%;
+      padding: 0;
+      text-align: center;
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+  }
+}
+
+//small
+@media (max-width: 767.98px) {}
