@@ -6,6 +6,7 @@ body {
   margin: 0;
   font-family: 'Anek Telugu', sans-serif !important;
   scroll-behavior: smooth;
+  scroll-padding-top: 3.9rem; /* height of sticky navbar */
 }
 
 * {
@@ -19,8 +20,8 @@ body {
 
   .navbar-brand {
     position: relative;
-    height: 4rem;
-    width: 12rem;
+    height: 3rem;
+    width: 10rem;
   }
 
   .btn {
@@ -68,6 +69,8 @@ body {
 }
 
 #how{
+  margin-bottom: 3rem;
+
   .card{
     @include shadow;
     margin: 1rem;
@@ -80,6 +83,10 @@ body {
   .card-title{
     font-weight: 700;
   }
+}
+
+#contact{
+  margin-bottom: 3rem;
 }
 
 @import "media-queries";

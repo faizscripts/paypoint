@@ -16,7 +16,7 @@ function Navbar() {
                             <a className="nav-link" href="#how">How it works</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Contact</a>
+                            <a className="nav-link" href="#contact">Contact</a>
                         </li>
                         <div className="nav-item pt-lg-1 nav-buttons">
                             <button className="btn btn-outline-primary mx-2">Login</button>
