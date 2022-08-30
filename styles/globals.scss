@@ -70,6 +70,7 @@ body {
 #how{
   .card{
     @include shadow;
+    margin: 1rem;
   }
 
   .card-body{
