@@ -15,7 +15,7 @@ function MyApp({ Component, pageProps }) {
               <meta charSet="utf-8"/>
               <meta name="viewport" content="width=device-width, initial-scale=1"/>
               <meta name="format-detection" content="telephone=no"/>
-              <meta name="description" content="Send money in a safe, reliable and robust system at a minimal cost"/>
+              <meta name="description" content="An efficient, reliable and secure method of sending money with little to no charges"/>
               <meta name="keywords" content="money, mpesa, paypoint, safe, reliable, minimal cose"/>
               <meta name="author" content="Faiz Ahmed"/>
           </Head>

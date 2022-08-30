@@ -4,6 +4,7 @@ body {
   margin: 0;
   font-family: 'Anek Telugu', sans-serif !important;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 * {
@@ -24,5 +25,31 @@ body {
     font-size: 1.1rem;
     font-weight: 600;
     padding: 3px 10px;
+  }
+}
+
+#hero{
+  height: 90vh;
+  padding: 0 5rem;
+
+  #description{
+    position: relative;
+  }
+
+  #description-text{
+    position: absolute;
+    top: 27%;
+    padding: 3rem;
+    text-align: center;
+    font-weight: 800;
+    font-size: 1.5rem;
+  }
+
+  #heading{
+    font-weight: 800;
+  }
+  
+  #hero-image-container{
+    position: relative;
   }
 }

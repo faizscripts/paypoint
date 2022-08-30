@@ -2,7 +2,7 @@ import Image from "next/image";
 
 function Navbar() {
     return(
-        <nav className="navbar navbar-expand-lg bg-light">
+        <nav className="navbar navbar-expand-lg sticky-top bg-light">
             <div className="container-fluid">
                 <a className="navbar-brand" href="#">
                     <Image src="/images/logo.webp" alt="logo" layout="fill" priority />
