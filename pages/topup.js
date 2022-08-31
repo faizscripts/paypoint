@@ -1,18 +1,20 @@
 import {useState} from "react";
 import QuickAmount from "../components/elements/QuickAmount";
+import Radios from "../components/elements/Radios";
+import Amount from "../components/elements/Amount";
 
 function TopUp() {
 
-    const [showRecipient, setShowRecipient]= useState(false)
+    const [useOther, setUseOther]= useState(false)
     const [recipient, setRecipient]= useState("")
     const [amount, setAmount]= useState("")
 
     const renderRecipient = () => {
-        if (showRecipient) {
+        if (useOther) {
             return(
                 <div className="mb-3">
                     <label htmlFor="recipient" className="form-label">Recipient&apos;s phone number </label>
-                    <input type="number" className="form-control" id="recipient" name="recipient" placeholder="+254705063256" value={recipient} onChange={e => setRecipient(e.target.value)} required/>
+                    <input type="number" className="form-control" id="recipient" name="recipient" placeholder="0705063256" value={recipient} onChange={e => setRecipient(e.target.value)} required/>
                 </div>
             )
         } else return null
@@ -26,34 +28,9 @@ function TopUp() {
                 </div>
                 <div className="card-body">
                     <form >
-                        <div className="mb-3 d-flex justify-content-evenly" onChange={() => setShowRecipient(!showRecipient)}>
-                            <div className="form-check">
-                                <input className="form-check-input" type="radio" name="account"
-                                       id="myAccount" defaultChecked="true" />
-                                    <label className="form-check-label mt-1" htmlFor="myAccount">
-                                        My Account
-                                    </label>
-                            </div>
-                            <div className="form-check">
-                                <input className="form-check-input" type="radio" name="account"
-                                       id="otherAccount"/>
-                                    <label className="form-check-label mt-1" htmlFor="otherAccount">
-                                        Other account
-                                    </label>
-                            </div>
-                        </div>
+                        <Radios option1="My account" option2="Other account" useOption2={useOther} setUseOption2={setUseOther} />
                         {renderRecipient()}
-                        <div className="mb-3">
-                            <label htmlFor="amount" className="form-label">Amount</label>
-                            <input type="number" className="form-control" id="amount" name="amount" placeholder="Amount you want to top up" value={amount} onChange={e => setAmount(e.target.value)} required/>
-                        </div>
-                        <div className="d-flex justify-content-evenly mb-3">
-                            <QuickAmount setAmount={setAmount} value="50" />
-                            <QuickAmount setAmount={setAmount} value="100" />
-                            <QuickAmount setAmount={setAmount} value="250" />
-                            <QuickAmount setAmount={setAmount} value="500" />
-                            <QuickAmount setAmount={setAmount} value="1000" />
-                        </div>
+                        <Amount amount={amount} setAmount={setAmount} />
                         <div className="submit">
                             <button type="submit" className="btn btn-primary">TOP UP</button>
                         </div>

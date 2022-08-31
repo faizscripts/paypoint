@@ -47,7 +47,7 @@ function Contact() {
                     </div>
                     <div className="col-md-4 mb-3">
                         <label htmlFor="phone" className="form-label">Phone</label>
-                        <input type="number" className="form-control" id="phone" name="phone" placeholder="+254712345678" value={phone} onChange={e => setPhone(e.target.value)} required/>
+                        <input type="number" className="form-control" id="phone" name="phone" placeholder="0712345678" value={phone} onChange={e => setPhone(e.target.value)} required/>
                     </div>
                 </div>
                 <div className="mb-3">
