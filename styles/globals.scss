@@ -22,6 +22,11 @@ body {
     position: relative;
     height: 3rem;
     width: 10rem;
+    @include pointer;
+  }
+
+  .home{
+    @include pointer;
   }
 
   .btn {
@@ -44,7 +49,7 @@ body {
   #description-text {
     position: absolute;
     top: 27%;
-    padding: 3rem;
+    padding: 3rem 0 3rem 3rem;
     text-align: center;
     font-weight: 800;
     font-size: 1.5rem;
@@ -56,6 +61,9 @@ body {
 
   #hero-image-container {
     position: relative;
+    width: 90%;
+    height: 80%;
+    top: 8%;
   }
 }
 
@@ -86,7 +94,33 @@ body {
 }
 
 #contact{
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
+}
+
+#footer {
+  display: flex;
+  justify-content: center;
+  background: black;
+  color: white;
+  padding: 0.5rem 0;
+}
+
+.register{
+  height: 86vh;
+  display: grid;
+  place-items: center;
+
+  .card{
+    @include shadow;
+    width: 80%;
+  }
+  
+  .card-header{
+    background: white;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
 }
 
 @import "media-queries";

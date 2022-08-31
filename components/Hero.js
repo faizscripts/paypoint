@@ -11,8 +11,10 @@ function Hero() {
                     <button className="btn btn-primary btn-lg">Send Money</button>
                 </div>
             </div>
-            <div className="col-md-7" id="hero-image-container">
-                <Image src={heroImage} alt="hero image" layout="fill" placeholder="blur" />
+            <div className="col-md-7" >
+                <div id="hero-image-container">
+                    <Image src={heroImage} alt="hero image" layout="fill" placeholder="blur" />
+                </div>
             </div>
         </div>
     )

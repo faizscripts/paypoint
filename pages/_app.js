@@ -3,6 +3,7 @@ import Head from "next/head";
 import Navbar from "../components/Navbar";
 import '../styles/globals.scss';
 import "bootstrap/dist/css/bootstrap.min.css"
+import Footer from "../components/Footer";
 
 function MyApp({Component, pageProps}) {
     useEffect(() => {
@@ -22,6 +23,7 @@ function MyApp({Component, pageProps}) {
             </Head>
             <Navbar/>
             <Component {...pageProps} />
+            <Footer/>
         </>
     )
 }
