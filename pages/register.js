@@ -1,4 +1,5 @@
 import {useState} from "react";
+import Link from "next/link";
 
 function Register() {
 
@@ -40,8 +41,9 @@ function Register() {
                                 <input type="password" className="form-control" id="confirm" name="confirm" value={confirm} onChange={e => setConfirm(e.target.value)} required/>
                             </div>
                         </div>
-                        <div className="d-flex justify-content-center my-4">
+                        <div className="submit">
                             <button type="submit" className="btn btn-primary">SUBMIT</button>
+                            <p>Have an account?<Link href="/login"><span className="alternative">&nbsp; Log in here</span></Link></p>
                         </div>
                     </form>
                 </div>

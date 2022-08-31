@@ -27,8 +27,8 @@ function Navbar() {
                             <a className="nav-link" href="#contact">Contact</a>
                         </li>
                         <div className="nav-item pt-lg-1 nav-buttons">
-                            <Link href="#">
-                                <button className="btn btn-outline-primary mx-2">Login</button>
+                            <Link href="/login">
+                                <button className="btn btn-outline-primary mx-2">Log In</button>
                             </Link>
                             <Link href="/register">
                                 <button className="btn btn-primary mx-2">Register</button>
