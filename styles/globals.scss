@@ -105,14 +105,15 @@ body {
   padding: 0.5rem 0;
 }
 
-.register{
+.card-page{
   height: 86vh;
   display: grid;
   place-items: center;
+  background: lightgrey;
 
   .card{
     @include shadow;
-    width: 80%;
+    width: 70%;
   }
   
   .card-header{
@@ -133,6 +134,14 @@ body {
   .alternative{
     color:  #0275d8;
     @include pointer;
+  }
+
+  .btn{
+    padding-bottom: 0;
+  }
+
+  .amount-btn{
+    border-radius: 10px;
   }
 }
 

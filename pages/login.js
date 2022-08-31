@@ -3,14 +3,11 @@ import Link from "next/link";
 
 function Login() {
 
-    const [name, setName]= useState("")
     const [email, setEmail]= useState("")
-    const [phone, setPhone]= useState("")
     const [password, setPassword]= useState("")
-    const [confirm, setConfirm]= useState("")
 
     return(
-        <div className="register container">
+        <div className="card-page">
             <div className="card">
                 <div className="card-header">
                     Log In
@@ -26,7 +23,7 @@ function Login() {
                             <input type="password" className="form-control" id="password" name="password" value={password} onChange={e => setPassword(e.target.value)} required/>
                         </div>
                         <div className="submit">
-                            <button type="submit" className="btn btn-primary">SUBMIT</button>
+                            <button type="submit" className="btn btn-primary">LOG IN</button>
                             <p>New here?<Link href="/register"><span className="alternative">&nbsp; Create an account</span></Link></p>
                         </div>
                     </form>

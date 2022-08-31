@@ -10,7 +10,7 @@ function Register() {
     const [confirm, setConfirm]= useState("")
 
     return(
-        <div className="register container">
+        <div className="card-page">
             <div className="card">
                 <div className="card-header">
                     Register
@@ -42,7 +42,7 @@ function Register() {
                             </div>
                         </div>
                         <div className="submit">
-                            <button type="submit" className="btn btn-primary">SUBMIT</button>
+                            <button type="submit" className="btn btn-primary">REGISTER</button>
                             <p>Have an account?<Link href="/login"><span className="alternative">&nbsp; Log in here</span></Link></p>
                         </div>
                     </form>
