@@ -29,6 +29,12 @@
       top: 0;
     }
   }
+
+  .register{
+    .card{
+      width: 85%;
+    }
+  }
 }
 
 //small
@@ -36,6 +42,12 @@
   #how {
     .card {
       margin: 2rem;
+    }
+  }
+
+  .register{
+    .card{
+      width: 95%;
     }
   }
 }
