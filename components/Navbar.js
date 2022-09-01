@@ -2,9 +2,9 @@ import {useRef} from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {connect} from "react-redux";
-import {addUser} from "../store/user/action";
+import {updateUser} from "../store/user/action";
 
-function Navbar({loginToken, name, addUser}) {
+function Navbar({loginToken, name, updateUser}) {
 
     const dropdownButton = useRef()
 
@@ -35,7 +35,7 @@ function Navbar({loginToken, name, addUser}) {
                             <hr className="dropdown-divider"/>
                         </li>
                             <div className="d-flex justify-content-center">
-                                <button onClick={() => addUser({name: null, token: null})} className="btn btn-danger btn-sm">LOG OUT</button>
+                                <button onClick={() => updateUser({name: null, token: null})} className="btn btn-danger btn-sm">LOG OUT</button>
                             </div>
                     </ul>
                 </div>
@@ -81,7 +81,7 @@ function Navbar({loginToken, name, addUser}) {
                         </li>
                         <li className="nav-item">
                             <Link href="/#how" scroll={false}>
-                                <div onClick={collapseNav} className="nav-link">How it works</div>
+                                <a onClick={collapseNav} className="nav-link">How it works</a>
                             </Link>
                         </li>
                         <li className="nav-item">
@@ -104,4 +104,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, {addUser})(Navbar)
+export default connect(mapStateToProps, {updateUser})(Navbar)

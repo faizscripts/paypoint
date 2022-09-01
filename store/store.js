@@ -1,10 +1,10 @@
 import {applyMiddleware, combineReducers, createStore} from 'redux'
 import {createWrapper} from 'next-redux-wrapper'
 import {composeWithDevTools} from 'redux-devtools-extension'
-import addUserReducer from './user/reducer'
+import updateUserReducer from './user/reducer'
 
 const combinedReducers = combineReducers({
-    user: addUserReducer,
+    user: updateUserReducer,
 })
 
 const makeStore = () => {

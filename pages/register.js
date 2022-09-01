@@ -3,9 +3,9 @@ import Link from "next/link";
 import {useRouter} from "next/router";
 import axios from "axios";
 import {connect} from "react-redux";
-import {addUser} from "../store/user/action";
+import {updateUser} from "../store/user/action";
 
-function Register({addUser}) {
+function Register({updateUser}) {
 
     const router = useRouter()
 
@@ -22,7 +22,7 @@ function Register({addUser}) {
         try {
             const response = await axios.post("/api/register", {name, email, phone, password})
             if (response.data.token) {
-                addUser(response.data)
+                updateUser(response.data)
                 router.push("/")
             } else {
                 setFormError(response.data)
@@ -97,4 +97,4 @@ function Register({addUser}) {
 
 }
 
-export default connect(null, {addUser})(Register)
+export default connect(null, {updateUser})(Register)

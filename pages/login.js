@@ -3,9 +3,9 @@ import Link from "next/link";
 import {useRouter} from "next/router";
 import axios from "axios";
 import {connect} from "react-redux";
-import {addUser} from "../store/user/action";
+import {updateUser} from "../store/user/action";
 
-function Login({addUser}) {
+function Login({updateUser}) {
 
     const router = useRouter()
 
@@ -19,7 +19,7 @@ function Login({addUser}) {
         try {
             const response = await axios.post("/api/login", {email, password})
             if (response.data.token) {
-                addUser(response.data)
+                updateUser(response.data)
                 router.push("/")
             } else {
                 setFormError(response.data)
@@ -66,4 +66,4 @@ function Login({addUser}) {
     )
 }
 
-export default connect(null, {addUser})(Login)
+export default connect(null, {updateUser})(Login)
