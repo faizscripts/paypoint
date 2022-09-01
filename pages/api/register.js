@@ -2,10 +2,39 @@ import connectDB from "../../utils/db";
 import {User, validate} from "../../models/users";
 import _ from "lodash"
 import bcrypt from "bcrypt"
+import nodemailer from "nodemailer";
 
 export default async function handler(req, res) {
 
     let formError = {}
+
+    const {name, email} = req.body
+
+    const transport = nodemailer.createTransport({
+        service: 'gmail',
+        secure: false,
+        auth: {
+            user: process.env.EMAIL,
+            pass: process.env.APP_PASSWORD
+        }
+    })
+
+    const mailOptions = {
+        from: `"Paypoint" ${process.env.EMAIL}`,
+        to: req.body.email,
+        subject: `SUCCESSFUL REGISTRATION AT PAYPOINT`,
+        html: `
+        Dear ${name}, <br>
+        
+        Your registration at Paypoint was successful. You will be receiving updates of your transactions from us through this email. You can also use this to send us emails if need be.<br> 
+        
+        Client satisfaction excellent service is our main job. We are happy to have you on board! 
+        
+        <br><br>
+        Kind regards,<br>
+        Paypoint
+        `,
+    }
 
     try {
         await connectDB()
@@ -44,6 +73,8 @@ export default async function handler(req, res) {
             name: req.body.name,
             token
         }
+
+        await transport.sendMail(mailOptions)
 
         res.status(200).json(data).end()
 

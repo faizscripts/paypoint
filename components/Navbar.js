@@ -1,39 +1,42 @@
+import {useRef} from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {connect} from "react-redux";
 import {addUser} from "../store/user/action";
 
-function Navbar({loginToken, name}) {
+function Navbar({loginToken, name, addUser}) {
+
+    const dropdownButton = useRef()
+
+    const navLinksContainer = useRef()
 
     const renderNavButtons = () => {
         if (loginToken) {
             return (
                 <div className="mx-lg-3 nav-item dropdown pt-lg-1">
-                    <button className="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    <button className="btn btn-primary dropdown-toggle login-menu-button" type="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
                         {name}
                     </button>
-                    <ul className="dropdown-menu dropdown-menu-end">
+                    <ul className="dropdown-menu dropdown-menu-end login-menu">
                         <Link href="/topup">
-                            <li className="dropdown-item">Top up</li>
+                            <li onClick={collapseNav} className="dropdown-item">Top up</li>
                         </Link>
                         <Link href="/send">
-                            <li className="dropdown-item">Send</li>
+                            <li onClick={collapseNav} className="dropdown-item">Send</li>
                         </Link>
                         <Link href="/withdraw">
-                            <li className="dropdown-item">Withdraw</li>
+                            <li onClick={collapseNav} className="dropdown-item">Withdraw</li>
                         </Link>
                         <Link href="/">
-                            <li className="dropdown-item">History</li>
+                            <li onClick={collapseNav} className="dropdown-item">History</li>
                         </Link>
                         <li>
                             <hr className="dropdown-divider"/>
                         </li>
-                        <Link href="/api/logout">
                             <div className="d-flex justify-content-center">
-                                <div className="btn btn-danger btn-sm">LOG OUT</div>
+                                <button onClick={() => addUser({name: null, token: null})} className="btn btn-danger btn-sm">LOG OUT</button>
                             </div>
-                        </Link>
                     </ul>
                 </div>
             )
@@ -41,14 +44,19 @@ function Navbar({loginToken, name}) {
             return (
                 <div className="nav-item pt-lg-1 nav-buttons">
                     <Link href="/login">
-                        <button className="btn btn-outline-primary mx-2 main-button">Log In</button>
+                        <button onClick={collapseNav} className="btn btn-outline-primary mx-2 main-button">Log In</button>
                     </Link>
                     <Link href="/register">
-                        <button className="btn btn-primary mx-2 main-button">Register</button>
+                        <button onClick={collapseNav} className="btn btn-primary mx-2 main-button">Register</button>
                     </Link>
                 </div>
             )
         }
+    }
+
+    const collapseNav = () => {
+        dropdownButton.current.classList.add("collapsed");
+        navLinksContainer.current.classList.remove("show");
     }
 
     return (
@@ -59,23 +67,27 @@ function Navbar({loginToken, name}) {
                         <Image src="/images/logo.webp" alt="logo" layout="fill" priority/>
                     </div>
                 </Link>
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
+                <button ref={dropdownButton} className="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                <div ref={navLinksContainer} className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li className="nav-item">
                             <Link href="/">
-                                <div className="nav-link home">Home</div>
+                                <div onClick={collapseNav} className="nav-link home">Home</div>
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#how">How it works</a>
+                            <Link href="/#how" scroll={false}>
+                                <div onClick={collapseNav} className="nav-link">How it works</div>
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#contact">Contact</a>
+                            <Link href="/#contact" scroll={false}>
+                                <a onClick={collapseNav} className="nav-link" >Contact</a>
+                            </Link>
                         </li>
                         {renderNavButtons()}
                     </ul>
