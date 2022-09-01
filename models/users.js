@@ -22,6 +22,11 @@ const userSchema = new mongoose.Schema({
         trim: true,
         unique: true
     },
+    balance:{
+        type: Number,
+        min: 0,
+        default: 0
+    },
     password: {
         type: String,
         minlength: 8,
@@ -32,10 +37,6 @@ const userSchema = new mongoose.Schema({
         default: Date.now
     }
 });
-
-userSchema.methods.generateLoginToken = function () {
-    return jwt.sign({_id: this._id}, process.env.JWTKEY);
-}
 
 export const User = models.User || mongoose.model('User', userSchema);
 

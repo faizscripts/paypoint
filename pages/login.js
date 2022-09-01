@@ -18,7 +18,7 @@ function Login({updateUser}) {
 
         try {
             const response = await axios.post("/api/login", {email, password})
-            if (response.data.token) {
+            if (response.data.email) {
                 updateUser(response.data)
                 router.push("/")
             } else {

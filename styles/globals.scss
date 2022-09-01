@@ -52,6 +52,10 @@ body {
     font-size: 1.2rem;
     font-weight: 600;
   }
+
+  .balance{
+    color: #0275d8;
+  }
 }
 
 #hero {
@@ -157,6 +161,10 @@ body {
 
   .amount-btn{
     border-radius: 10px;
+  }
+  
+  .submit-button{
+    text-transform: uppercase;
   }
 }
 

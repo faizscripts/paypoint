@@ -4,19 +4,20 @@ import Link from "next/link";
 import {connect} from "react-redux";
 import {updateUser} from "../store/user/action";
 
-function Navbar({loginToken, name, updateUser}) {
+function Navbar({user, updateUser}) {
 
     const dropdownButton = useRef()
 
     const navLinksContainer = useRef()
 
     const renderNavButtons = () => {
-        if (loginToken) {
+        if (user) {
             return (
                 <div className="mx-lg-3 nav-item dropdown pt-lg-1">
-                    <button className="btn btn-primary dropdown-toggle login-menu-button" type="button" data-bs-toggle="dropdown"
+                    <button className="btn btn-primary dropdown-toggle login-menu-button" type="button"
+                            data-bs-toggle="dropdown"
                             aria-expanded="false">
-                        {name}
+                        {user.name}
                     </button>
                     <ul className="dropdown-menu dropdown-menu-end login-menu">
                         <Link href="/topup">
@@ -34,17 +35,18 @@ function Navbar({loginToken, name, updateUser}) {
                         <li>
                             <hr className="dropdown-divider"/>
                         </li>
-                            <div className="d-flex justify-content-center">
-                                <button onClick={() => updateUser({name: null, token: null})} className="btn btn-danger btn-sm">LOG OUT</button>
-                            </div>
+                        <div className="d-flex justify-content-center">
+                            <button onClick={() => updateUser(null)} className="btn btn-danger btn-sm">LOG OUT</button>
+                        </div>
                     </ul>
                 </div>
             )
-        } else{
+        } else {
             return (
                 <div className="nav-item pt-lg-1 nav-buttons">
                     <Link href="/login">
-                        <button onClick={collapseNav} className="btn btn-outline-primary mx-2 main-button">Log In</button>
+                        <button onClick={collapseNav} className="btn btn-outline-primary mx-2 main-button">Log In
+                        </button>
                     </Link>
                     <Link href="/register">
                         <button onClick={collapseNav} className="btn btn-primary mx-2 main-button">Register</button>
@@ -57,6 +59,16 @@ function Navbar({loginToken, name, updateUser}) {
     const collapseNav = () => {
         dropdownButton.current.classList.add("collapsed");
         navLinksContainer.current.classList.remove("show");
+    }
+
+    const renderBalance = () => {
+        if (user) {
+            return (
+                <li className="nav-item">
+                    <div className="nav-link balance">Ksh. {user.balance}</div>
+                </li>
+            )
+        }
     }
 
     return (
@@ -86,9 +98,10 @@ function Navbar({loginToken, name, updateUser}) {
                         </li>
                         <li className="nav-item">
                             <Link href="/#contact" scroll={false}>
-                                <a onClick={collapseNav} className="nav-link" >Contact</a>
+                                <a onClick={collapseNav} className="nav-link">Contact</a>
                             </Link>
                         </li>
+                        {renderBalance()}
                         {renderNavButtons()}
                     </ul>
                 </div>
@@ -99,8 +112,7 @@ function Navbar({loginToken, name, updateUser}) {
 
 const mapStateToProps = (state) => {
     return {
-        loginToken: state.user.token,
-        name: state.user.name
+        user: state.user
     }
 }
 

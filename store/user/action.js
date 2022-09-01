@@ -1,8 +1,8 @@
-import {ADD_USER} from "../types";
+import {UPDATE_USER} from "../types";
 
 export const updateUser = (data) => {
     return {
-        type: ADD_USER,
+        type: UPDATE_USER,
         payload: data
     }
 }

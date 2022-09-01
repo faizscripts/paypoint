@@ -1,10 +1,10 @@
 import Link from "next/link";
 import {connect} from "react-redux";
 
-function HowCard({src, title, description, loginToken, button}) {
+function HowCard({src, title, description, user, button}) {
 
     const renderHowButton = () => {
-        if (loginToken){
+        if (user){
             if (src !== "register"){
                 return (
                     <Link href={`/${src}`}>
@@ -32,7 +32,7 @@ function HowCard({src, title, description, loginToken, button}) {
 
 const mapStateToProps = (state) => {
     return {
-        loginToken: state.user.token
+        user: state.user
     }
 }
 

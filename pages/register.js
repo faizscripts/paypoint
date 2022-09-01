@@ -9,28 +9,32 @@ function Register({updateUser}) {
 
     const router = useRouter()
 
-    const [formError, setFormError] = useState(false)
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [phone, setPhone] = useState("")
     const [password, setPassword] = useState("")
     const [confirm, setConfirm] = useState("")
+    const [formError, setFormError] = useState(false)
+    const [processing, setProcessing] = useState(false)
 
     const onFormSubmit = async (event) => {
         event.preventDefault()
 
         try {
+            setProcessing(true)
             const response = await axios.post("/api/register", {name, email, phone, password})
-            if (response.data.token) {
+            if (response.data.email) {
                 updateUser(response.data)
                 router.push("/")
+                setProcessing(false)
             } else {
                 setFormError(response.data)
+                setProcessing(false)
             }
-
         } catch (e) {
             console.log(e);
             router.push("/")
+            setProcessing(false)
         }
     }
 
@@ -85,7 +89,7 @@ function Register({updateUser}) {
                             </div>
                         </div>
                         <div className="submit">
-                            <button type="submit" className="btn btn-primary">REGISTER</button>
+                            <button type="submit" className="btn btn-primary submit-button">{processing? "Processing..." : "Register"}</button>
                             <p>Have an account?<Link href="/login"><span
                                 className="alternative">&nbsp; Log in here</span></Link></p>
                         </div>

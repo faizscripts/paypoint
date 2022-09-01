@@ -1,14 +1,12 @@
-import {ADD_USER} from "../types";
+import {UPDATE_USER} from "../types";
 
-const INITIAL_STATE = {
-    name: null,
-    token: null
-}
-
-export default (state = INITIAL_STATE, action) => {
+export default (state = null, action) => {
     switch (action.type) {
-        case ADD_USER:
-            return {...state, name: action.payload.name, token: action.payload.token }
+        case UPDATE_USER:
+            if (!action.payload){
+                return null
+            }
+            return {...state, ...action.payload}
 
         default:
             return state

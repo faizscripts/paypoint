@@ -21,14 +21,7 @@ export default async function handler(req, res) {
             return res.status(200).json(formError)
         }
 
-        const token = user.generateLoginToken();
-
-        const data = {
-            name: user.name,
-            token
-        }
-
-        res.status(200).json(data).end()
+        res.status(200).json(user).end()
 
     } catch (e) {
         res.status(500).end()
