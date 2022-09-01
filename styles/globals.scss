@@ -7,6 +7,10 @@ body {
   font-family: 'Anek Telugu', sans-serif !important;
   scroll-behavior: smooth;
   scroll-padding-top: 3.9rem; /* height of sticky navbar */
+
+  .form-error{
+      color: red;
+  }
 }
 
 * {

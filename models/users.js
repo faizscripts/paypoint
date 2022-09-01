@@ -45,7 +45,7 @@ export function validate(user) {
         email: Joi.string().email().min(3).max(255),
         phone: Joi.number(),
         password: Joi.string().min(8).max(50),
-        password_confirmation: Joi.any().equal(Joi.ref('password')).options({ messages: { 'any.only': 'Passwords do not match'} }),
+        confirm: Joi.any().equal(Joi.ref('password')).options({ messages: { 'any.required': 'passwords do not match'} })
     })
 
     const options = {

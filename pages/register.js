@@ -1,22 +1,13 @@
-import {useState, useEffect} from "react";
-import useSWR from 'swr'
+import {useState} from "react";
 import Link from "next/link";
 import {useRouter} from "next/router";
 import axios from "axios";
+import {connect} from "react-redux";
+import {addLoginToken} from "../store/login/action";
 
-function Register() {
+function Register({addLoginToken, loginToken}) {
 
     const router = useRouter()
-
-    // const fetcher = async () => {
-    //     const response = await axios.get("http://localhost:3000/api/register")
-    //     return response.data
-    // }
-    //
-    // const {data, error} = useSWR('dashboard', fetcher)
-    //
-    // console.log(data);
-
 
     const [formError, setFormError] = useState(false)
     const [name, setName] = useState("")
@@ -25,25 +16,29 @@ function Register() {
     const [password, setPassword] = useState("")
     const [confirm, setConfirm] = useState("")
 
-    const checkFormError = async () => {
-        const response = await axios.get("http://localhost:3000/api/register")
-        if (response.data.error) setFormError(response.data.error)
-        return response.data.error
-    }
-
     const onFormSubmit = async (event) => {
         event.preventDefault()
 
         try {
             const response = await axios.post("/api/register", {name, email, phone, password})
-            if (response.data) {
-                router.push("/register")
+            if (typeof response.data === "object") {
+                setFormError(response.data)
+            } else {
+                addLoginToken(response.data)
+                router.push("/")
             }
-
-            router.push("/")
 
         } catch (e) {
             console.log(e);
+            router.push("/")
+        }
+    }
+
+    function printError(error) {
+        if (error){
+            if (typeof error === "object") return <div className="form-text form-error">{error.message}</div>
+
+            return <div className="form-text form-error">{error}</div>
         }
     }
 
@@ -66,12 +61,14 @@ function Register() {
                                 <input type="email" className="form-control" id="email" name="email"
                                        placeholder="name@example.com" value={email}
                                        onChange={e => setEmail(e.target.value)} required/>
+                                {printError(formError.email)}
                             </div>
                             <div className="col-md-6 mb-3">
                                 <label htmlFor="phone" className="form-label">Phone number</label>
                                 <input type="number" className="form-control" id="phone" name="phone"
                                        placeholder="0712345678" value={phone} onChange={e => setPhone(e.target.value)}
                                        required/>
+                                {printError(formError.phone)}
                             </div>
                         </div>
                         <div className="row">
@@ -79,6 +76,7 @@ function Register() {
                                 <label htmlFor="password" className="form-label">Password</label>
                                 <input type="password" className="form-control" id="password" name="password"
                                        value={password} onChange={e => setPassword(e.target.value)} required/>
+                                {printError(formError.validate)}
                             </div>
                             <div className="col-md-6 mb-3">
                                 <label htmlFor="confirm" className="form-label">Confirm password</label>
@@ -97,7 +95,12 @@ function Register() {
         </div>
     )
 
-
 }
 
-export default Register
+const mapStateToProps = (state) => {
+    return{
+        loginToken: state.loginToken
+    }
+}
+
+export default connect(mapStateToProps, {addLoginToken})(Register)
