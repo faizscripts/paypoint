@@ -1,10 +1,10 @@
 import {applyMiddleware, combineReducers, createStore} from 'redux'
-import {createWrapper, HYDRATE} from 'next-redux-wrapper'
+import {createWrapper} from 'next-redux-wrapper'
 import {composeWithDevTools} from 'redux-devtools-extension'
-import loginTokenReducer from './login/reducer'
+import addUserReducer from './user/reducer'
 
 const combinedReducers = combineReducers({
-    loginToken: loginTokenReducer,
+    user: addUserReducer,
 })
 
 const makeStore = () => {

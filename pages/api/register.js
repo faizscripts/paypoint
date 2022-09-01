@@ -40,7 +40,12 @@ export default async function handler(req, res) {
 
         const token = user.generateLoginToken();
 
-        res.status(200).json(token).end()
+        const data = {
+            name: req.body.name,
+            token
+        }
+
+        res.status(200).json(data).end()
 
     } catch (e) {
         res.status(500).end()

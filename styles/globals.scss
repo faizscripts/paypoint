@@ -33,10 +33,14 @@ body {
     @include pointer;
   }
 
-  .btn {
+  .main-button {
     font-size: 1.1rem;
     font-weight: 600;
     padding: 3px 10px;
+  }
+
+  .dropdown-item{
+    @include pointer;
   }
 }
 
