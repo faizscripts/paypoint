@@ -21,7 +21,6 @@ export default async function handler(req, res) {
 
         if (email) {
             receiver = await User.findOne({email});
-            console.log(receiver);
             if (!receiver) {
                 formError.email = "user with this email address does not exist"
                 return res.status(200).json(formError)
