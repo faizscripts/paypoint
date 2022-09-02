@@ -5,6 +5,7 @@ import axios from "axios";
 import {useRouter} from "next/router";
 import {connect} from "react-redux";
 import {updateUser} from "../store/user/action";
+import Link from "next/link";
 
 function Withdraw({user, updateUser}) {
 
@@ -75,8 +76,11 @@ function Withdraw({user, updateUser}) {
                         {renderOptions()}
                         {printError(formError.amount)}
                         <Amount amount={amount} setAmount={setAmount} />
-                        <div className="submit">
+                        <div className="submit  d-flex justify-content-evenly">
                             <button type="submit" className="btn btn-primary submit-button">{processing? "Processing..." : "Withdraw"}</button>
+                            <Link href="/">
+                                <div className="btn btn-secondary submit-button">Cancel</div>
+                            </Link>
                         </div>
                     </form>
                 </div>

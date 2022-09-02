@@ -5,6 +5,7 @@ import axios from "axios";
 import {useRouter} from "next/router";
 import {connect} from "react-redux";
 import {updateUser} from "../store/user/action";
+import Link from "next/link";
 
 function TopUp({user, updateUser}) {
 
@@ -67,8 +68,11 @@ function TopUp({user, updateUser}) {
                         <Radios option1="My account" option2="Other account" useOption2={useOther} setUseOption2={setUseOther} />
                         {renderRecipient()}
                         <Amount amount={amount} setAmount={setAmount} />
-                        <div className="submit">
+                        <div className="submit d-flex justify-content-evenly">
                             <button type="submit" className="btn btn-primary submit-button">{processing? "Processing..." : "Top up"}</button>
+                            <Link href="/">
+                                <div className="btn btn-secondary submit-button">Cancel</div>
+                            </Link>
                         </div>
                     </form>
                 </div>
