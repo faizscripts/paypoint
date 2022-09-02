@@ -56,7 +56,7 @@ export default async function handler(req, res) {
             subject: `Withdrew ksh. ${amount} at Paypoint agent number ${agent}`,
             html: `
         Dear ${account.name}, <br>
-        
+        <br>
         Your withdrawal of Ksh. ${amount} at Paypoint agent number ${agent} was successful. Your new account balance is Ksh. <b>${account.balance}</b> 
         
         <br><br>
@@ -71,8 +71,8 @@ export default async function handler(req, res) {
             subject: `Transferred ksh. ${amount} to ${phone} MPESA (Paypoint)`,
             html: `
         Dear ${account.name}, <br>
-        
-        You successfully transferred Ksh. ${amount} to ${phone} MPESA. Your new account balance is Ksh. <b>${account.balance}</b> 
+        <br>
+        You have successfully transferred Ksh. ${amount} to ${phone} MPESA. Your new account balance is Ksh. <b>${account.balance}</b> 
         
         <br><br>
         Kind regards,<br>

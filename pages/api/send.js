@@ -67,8 +67,8 @@ export default async function handler(req, res) {
             subject: `Sent ksh. ${amount} to ${receiver.name} (Paypoint)`,
             html: `
         Dear ${sender.name}, <br>
-        
-        Your successfully sent Ksh. ${amount} to ${receiver.name}. Your new account balance is Ksh. <b>${sender.balance}</b> 
+        <br>
+        You have successfully sent Ksh. ${amount} to ${receiver.name} (${receiver.email}). Your new account balance is Ksh. <b>${sender.balance}.</b> 
         
         <br><br>
         Kind regards,<br>
@@ -82,8 +82,8 @@ export default async function handler(req, res) {
             subject: `Received ksh. ${amount} from ${sender.name} (Paypoint)`,
             html: `
         Dear ${receiver.name}, <br>
-        
-        Your successfully received Ksh. ${amount} from ${sender.name}. Your new account balance is Ksh. <b>${receiver.balance}</b> 
+        <br>
+        You have successfully received Ksh. ${amount} from ${sender.name} (${sender.email}). Your new account balance is Ksh. <b>${receiver.balance}.</b> 
         
         <br><br>
         Kind regards,<br>
