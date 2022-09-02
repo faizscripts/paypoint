@@ -29,9 +29,6 @@ function Navbar({user, updateUser}) {
                         <Link href="/withdraw">
                             <li onClick={collapseNav} className="dropdown-item">Withdraw</li>
                         </Link>
-                        <Link href="/">
-                            <li onClick={collapseNav} className="dropdown-item">History</li>
-                        </Link>
                         <li>
                             <hr className="dropdown-divider"/>
                         </li>
@@ -72,7 +69,7 @@ function Navbar({user, updateUser}) {
     }
 
     return (
-        <nav className="navbar sticky-top navbar-expand-lg ">
+        <nav className="navbar sticky-top navbar-expand-lg bg-light">
             <div className="container-fluid">
                 <Link href="/">
                     <div className="navbar-brand">
